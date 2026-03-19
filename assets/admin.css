@@ -1,0 +1,67 @@
+/**
+ * Mobile Floating Banner — Admin Styles
+ */
+
+/* Keep color picker from overflowing the settings table */
+.wp-picker-container {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* ---------------------------------------------------------------
+   Admin preview
+--------------------------------------------------------------- */
+.mfb-preview-section {
+    margin-top: 30px;
+    max-width: 700px;
+}
+
+/* Row that handles alignment of the pill */
+.mfb-admin-preview-row {
+    display: flex;
+    padding: 24px 20px;
+    background: #f0f0f1;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
+
+/* Pill — mirrors a.mfb-call-link */
+.mfb-admin-preview-pill {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    border-radius: 999px;
+    padding: 10px 24px 10px 30px;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 700;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.18);
+    cursor: default;
+    overflow: visible;
+    white-space: nowrap;
+}
+
+/* Number text — mirrors .mfb-number */
+.mfb-preview-number {
+    font-size: 1rem;
+    font-weight: 700;
+    white-space: nowrap;
+    padding-left: 28px;
+}
+
+/* Icon circle — mirrors .mfb-icon-wrap (user's version) */
+.mfb-preview-icon-wrap {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    position: absolute;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mfb-preview-icon-wrap svg {
+    display: block;
+    flex-shrink: 0;
+}

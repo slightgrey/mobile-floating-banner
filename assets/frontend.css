@@ -1,0 +1,114 @@
+/**
+ * Mobile Floating Banner — Frontend Styles
+ *
+ * Design: floating pill at the bottom of the viewport.
+ * The icon block is taller than the pill and overflows it top and bottom.
+ * No circle border/shadow around the icon — plain coloured block on the left.
+ *
+ * Dynamic colors are injected via wp_add_inline_style().
+ * Device visibility is CSS-only via media queries + PHP-added classes.
+ */
+
+/* ---------------------------------------------------------------
+   Outer wrapper — positions the pill left/center/right
+--------------------------------------------------------------- */
+#mfb-floating-bar {
+    position: fixed;
+    bottom: 15px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 9999;
+    display: none;
+    pointer-events: none;
+    padding: 0 20px;
+    box-sizing: border-box;
+    align-items: center;
+}
+
+#mfb-floating-bar.mfb-align-left   { justify-content: flex-start; }
+#mfb-floating-bar.mfb-align-center { justify-content: center; }
+#mfb-floating-bar.mfb-align-right  { justify-content: flex-end; }
+
+/* ---------------------------------------------------------------
+   Call link — the pill
+--------------------------------------------------------------- */
+#mfb-floating-bar a.mfb-call-link {
+    pointer-events: all;
+    position: relative;         /* so icon-wrap can overflow via negative margin */
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    border-radius: 999px;
+    /* tight left padding — icon-wrap handles its own space */
+    padding: 10px 24px 10px 30px;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.22);
+    transition: box-shadow 0.18s ease, transform 0.18s ease;
+    overflow: visible;          /* allow icon-wrap to bleed outside */
+    white-space: nowrap;
+}
+
+#mfb-floating-bar a.mfb-call-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
+    text-decoration: none;
+}
+
+/* ---------------------------------------------------------------
+   Icon block — taller and bigger than the pill, no circle/shadow
+--------------------------------------------------------------- */
+#mfb-floating-bar .mfb-icon-wrap {
+    flex-shrink: 0;
+    /* wider and taller than the pill — overflows top & bottom */
+    width: 64px;
+    height: calc(100% + 20px);  /* 10px taller each side */
+    margin-top: -10px;
+    margin-bottom: -10px;
+    border-radius: 999px 0 0 999px; /* pill-left shape to match pill, flat on right */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* no box-shadow, no separate border */
+}
+
+#mfb-floating-bar .mfb-icon-wrap {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    position: absolute;
+    left: 0;
+}
+
+#mfb-floating-bar .mfb-icon {
+    display: block;
+    flex-shrink: 0;
+}
+
+/* ---------------------------------------------------------------
+   Phone number / label text
+--------------------------------------------------------------- */
+#mfb-floating-bar .mfb-number {
+    font-size: 1rem;
+    font-weight: 700;
+    white-space: nowrap;
+    padding-left: 28px;
+}
+
+/* ---------------------------------------------------------------
+   Device visibility
+--------------------------------------------------------------- */
+
+@media screen and (max-width: 767px) {
+    #mfb-floating-bar.mfb-show-mobile { display: flex; }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    #mfb-floating-bar.mfb-show-tablet { display: flex; }
+}
+
+@media screen and (min-width: 1025px) {
+    #mfb-floating-bar.mfb-show-desktop { display: flex; }
+}
