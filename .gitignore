@@ -1,0 +1,17 @@
+# Images / design references
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+
+# Node
+node_modules/
